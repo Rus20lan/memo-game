@@ -2,6 +2,7 @@ import { useEffect, useReducer } from 'react';
 import './App.css';
 import { actions } from './const';
 import { BackButton } from './components/BackButton';
+import SharePoints from './components/SharePoints';
 
 const generateDesck = () => {
   const colors = [
@@ -153,6 +154,7 @@ function App() {
           </div>
         </>
       )}
+      <SharePoints />
     </div>
   );
 }

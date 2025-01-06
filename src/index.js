@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { mainButton, mockTelegramEnv, shareURL } from '@telegram-apps/sdk';
+import { mockTelegramEnv } from '@telegram-apps/sdk';
 import { init, miniApp, backButton } from '@telegram-apps/sdk-react';
 
 try {
@@ -69,30 +69,11 @@ try {
     version: '7.2',
     platform: 'tdesktop',
   });
-
   init();
 }
 miniApp.mount();
 miniApp.setHeaderColor('#aa1388');
 backButton.mount();
-mainButton.mount();
-mainButton.setParams({
-  backgroundColor: '#aa1388',
-  text: 'Поделиться очками',
-  isVisible: true,
-  isEnabled: true,
-});
-
-mainButton.onClick(() => {
-  try {
-    // Получение текущих очков из localStorage
-    const score = localStorage.getItem('memory-game-score') || 0;
-    shareURL(`Посмотрите! У меня ${score} очков в игре!`);
-    console.log('Окно выбора чата открыто для отправки сообщения.');
-  } catch (error) {
-    console.error('Ошибка при открытии окна выбора чата:', error);
-  }
-});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
