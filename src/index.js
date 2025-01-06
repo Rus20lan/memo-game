@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { mockTelegramEnv } from '@telegram-apps/sdk';
-import { init, miniApp, backButton } from '@telegram-apps/sdk-react';
+import {
+  init,
+  miniApp,
+  backButton,
+  mainButton,
+} from '@telegram-apps/sdk-react';
 
 try {
   // Попытка инициализировать настоящее окружение Telegram
@@ -74,6 +79,7 @@ try {
 miniApp.mount();
 miniApp.setHeaderColor('#aa1388');
 backButton.mount();
+mainButton.mount();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
