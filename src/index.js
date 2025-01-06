@@ -75,13 +75,13 @@ try {
 miniApp.mount();
 miniApp.setHeaderColor('#aa1388');
 backButton.mount();
+mainButton.mount();
 mainButton.setParams({
   backgroundColor: '#aa1388',
   text: 'Поделиться очками',
   isVisible: true,
   isEnabled: true,
 });
-mainButton.mount();
 
 mainButton.onClick(() => {
   try {
