@@ -1,13 +1,8 @@
 import { mainButton, useSignal, shareURL } from '@telegram-apps/sdk-react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const SharePoints = () => {
   const isVisible = useSignal(mainButton.isVisible);
-  const [isClick, setIsClick] = useState(false);
-
-  useEffect(() => {
-    console.log('The mainButton is', isVisible ? 'visible' : 'invisible');
-  }, [isVisible]);
 
   useEffect(() => {
     if (mainButton.setParams.isAvailable()) {
@@ -38,25 +33,15 @@ const SharePoints = () => {
         console.error('Ошибка при открытии окна выбора чата:', error);
       }
     };
-    if (isClick) {
-      mainButton.onClick(handleClick);
-      setIsClick(false);
-    }
+    mainButton.onClick(handleClick);
 
     return () => {
       mainButton.offClick(handleClick);
       mainButton.unmount();
     };
-  }, [isClick]);
+  }, []);
 
-  return (
-    <button
-      style={{ width: '100%', height: '40px' }}
-      onClick={() => setIsClick(true)}
-    >
-      Click
-    </button>
-  );
+  return null;
 };
 
 export default SharePoints;
