@@ -44,6 +44,7 @@ const gameReducer = (state, action) => {
       ) {
         return { ...state, flipped: [...state.flipped, action.index] };
       }
+      break;
 
     case actions.CHECK_MATCH:
       // Проверяем совпадение перевернутых карточек

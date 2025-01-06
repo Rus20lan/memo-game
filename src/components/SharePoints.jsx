@@ -3,12 +3,21 @@ import { useEffect } from 'react';
 
 const SharePoints = () => {
   const isVisible = useSignal(mainButton.isVisible);
-
+  mainButton.mount();
   useEffect(() => {
-    if (isVisible && mainButton.isMounted) {
-      mainButton.backgroundColor = '#aa1388';
-      mainButton.text = 'Поделиться очками';
-      mainButton.isEnabled = true;
+    if (isVisible && mainButton.setParams.isAvailable()) {
+      mainButton.setParams({
+        backgroundColor: '#aa1388',
+        hasShineEffect: true,
+        isEnabled: true,
+        text: 'Поделиться очками',
+        textColor: '#ffffff',
+      });
+      mainButton.backgroundColor();
+      mainButton.hasShineEffect();
+      mainButton.isEnabled();
+      mainButton.text();
+      mainButton.textColor();
     }
   }, [isVisible]);
 
@@ -23,10 +32,11 @@ const SharePoints = () => {
         console.error('Ошибка при открытии окна выбора чата:', error);
       }
     };
-    mainButton.mount();
+    // mainButton.mount();
     mainButton.onClick(handleClick);
 
     return () => {
+      mainButton.offClick(handleClick);
       mainButton.unmount();
     };
   }, []);
